@@ -84,5 +84,5 @@ Edit notes feature
 Deploy on Render / Railway / Heroku
 Improve UI with Bootstrap or Tailwind CSS
 
-###📜 License
+### 📜 License
 This project is open-source and free to use.
