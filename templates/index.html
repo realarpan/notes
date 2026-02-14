@@ -1,29 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Panel</title>
+    <title>Notes App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #667eea;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .admin-link {
+            margin-top: 15px;
+            display: block;
+            text-decoration: none;
+            color: #667eea;
+            font-size: 14px;
+        }
+
+        .admin-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-{% if not dashboard %}
-    <h2>Admin Login</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Admin Username" required>
-        <input type="password" name="password" placeholder="Admin Password" required>
-        <button type="submit">Login</button>
-    </form>
-{% else %}
-    <h2>Admin Dashboard</h2>
-    <a href="/logout">Logout</a>
-    <ul>
-        {% for note in notes %}
-            <li>
-                <strong>{{ note.user }}</strong>: {{ note.text }}
-                <a href="/delete/{{ loop.index0 }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
+    <div class="card">
+        <h2>Create Note</h2>
+
+        <form action="/add" method="POST">
+            <input type="text" name="username" placeholder="Your Name" required>
+            <input type="text" name="note" placeholder="Enter your note..." required>
+            <button type="submit">Add Note</button>
+        </form>
+
+        <a class="admin-link" href="/admin">Admin Login</a>
+    </div>
 
 </body>
 </html>
